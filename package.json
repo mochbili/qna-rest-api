@@ -1,0 +1,22 @@
+{
+  "name": "qna-rest-api",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mochbili/qna-rest-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mochbili/qna-rest-api/issues"
+  },
+  "homepage": "https://github.com/mochbili/qna-rest-api#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}
