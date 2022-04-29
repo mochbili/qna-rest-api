@@ -46,8 +46,16 @@ router.delete('/:qID/answers/:aID', function(req, res, next) {
 
 // route for upvote dan downvote
 router.post('/:qID/answers/:aID/vote-:dir', function(req, res, next) {
+  if (req.params.dir.search(/^(up|down)$/) === -1) {
+    let err = new Error('Not found');
+    err.status = 404;
+    next(err);
+  } else {
+    next();
+  }
+}, function(req, res, next) {
   res.json({
-    response: 'you send me a POST request to /vote-' + req.params.dir,
+    response: 'you send me a POST request to /vote-' + req.params.dir, 
     questionsId: req.params.qID,
     answerId: req.params.aID,
     vote: req.params.dir,
