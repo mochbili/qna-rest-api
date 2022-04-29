@@ -3,12 +3,27 @@
 const express = require('express');
 const logger = require('morgan');
 const jsonParser = require('body-parser').json;
+const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
 const routes = require('./routes');
 
 app.use(logger('dev'));
 app.use(jsonParser());
+
+// mongodb connectiion
+mongoose.connect('mongodb://127.0.0.1:27017/qa');
+let db = mongoose.connection;
+// if mongo conection error
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.on('error', function (err) {
+  console.log('connection error:', err);
+});
+
+db.once('open', function() {
+  console.log('db connection successfull');
+});
 
 app.use('/questions', routes);
 
